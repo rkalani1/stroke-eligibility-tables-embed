@@ -1,0 +1,624 @@
+# Stroke Studies Reference Tables
+
+This document contains copy-pasteable HTML tables styled with a purple and gold theme that you can paste directly into your intranet page editor (using "Edit HTML" or "Source" mode).
+
+They are organized by clinical presentation, formatted with responsive styling, and are 100% consistent with your studies summary.
+
+---
+
+## Ischemic Stroke - Acute (Onset ≤ 24 Hours)
+
+```html
+<div id="table-ischemic-hyperacute" style="overflow-x: auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; font-size: 14px; text-align: left; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #4b2e83; color: white;">
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 15%;">Study</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Hypothesis / Summary</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Eligibility</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 25%;">Key Exclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05948566" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SISTER ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        A Phase-2, prospective, randomized, placebo-controlled, blinded, dose finding trial determining the safety and preliminary efficacy of <strong>TS23</strong> (monoclonal antibody against alpha-2 antiplasmin) in acute ischemic stroke.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Anterior circulation acute ischemic stroke</li>
+                                            <li style="margin-bottom: 4px;">Within <strong>4.5 - 24 hours</strong> of onset</li>
+                                            <li style="margin-bottom: 4px;">NIHSS <strong>&ge; 4</strong></li>
+                                            <li style="margin-bottom: 4px;">ASPECTS <strong>&ge; 6</strong> on CT</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Received thrombolysis or EVT with clot engagement</li>
+                                            <li style="margin-bottom: 4px;">Known stroke in past 90 days</li>
+                                            <li style="margin-bottom: 4px;">Pre-stroke mRS &gt; 2</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06289985" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">STEP ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Randomized, Multifactorial, Adaptive, Platform trial optimizing care for AIS due to large or medium vessel occlusions (LVOs and MVOs).
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <div style="font-weight: 600; margin-bottom: 4px; font-size: 12px; color: #4b2e83;">Eligible Populations:</div>
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;"><strong>LVO Population:</strong> Complete occlusion of intracranial ICA or M1 MCA, with mild deficits (NIHSS 0 - 5)</li>
+                                            <li style="margin-bottom: 4px;"><strong>MVO Population:</strong> Non-dominant or Co-dominant M2 and M3 MCA occlusions, with NIHSS <strong>&ge; 8</strong></li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">CT ASPECTS &lt; 6</li>
+                                            <li style="margin-bottom: 4px;">Acute occlusions in multiple vascular territories or tandem occlusions</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT04856696" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">TESTED ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        A prospective, observational study for persons with a pre-stroke modified Rankin Scale (mRS) 3-4 experiencing an LVO-AIS, comparing the effectiveness of EVT to medical management.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">AIS presenting within <strong>24 hours</strong> of onset</li>
+                                            <li style="margin-bottom: 4px;">Occlusion of ICA, M1, or dominant M2</li>
+                                            <li style="margin-bottom: 4px;">Pre-stroke mRS <strong>3 - 4</strong></li>
+                                            <li style="margin-bottom: 4px;">NIHSS <strong>&ge; 6</strong></li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Terminal illness at time of stroke</li>
+                                            <li style="margin-bottom: 4px;">Stroke onset during acute inpatient facility stay</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+```
+
+---
+
+## Ischemic Stroke - Inpatient (Admission to Day 30)
+
+```html
+<div id="table-ischemic-inpatient" style="overflow-x: auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; font-size: 14px; text-align: left; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #4b2e83; color: white;">
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 15%;">Study</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Hypothesis / Summary</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Eligibility</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 25%;">Key Exclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05338697" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">VERIFY ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Validating CMS structure/function measures (TMS motor evoked potentials and MRI lesion load) to establish early prognostic data for upper extremity recovery outcomes.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Unilaterally symptomatic acute ischemic stroke with motor deficits</li>
+                                            <li style="margin-bottom: 4px;">Consented within <strong>24 - 96 hours</strong> of LNW</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Pre-stroke upper extremity condition limiting use</li>
+                                            <li style="margin-bottom: 4px;">Dense sensory loss (NIHSS score = 2) or seizure since onset</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06722755" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SCOUTS-3 ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating an intensive CPAP support intervention to improve adherence and recovery in stroke survivors with Obstructive Sleep Apnea (OSA) undergoing inpatient rehab.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Acute ischemic stroke within <strong>past 30 days</strong></li>
+                                            <li style="margin-bottom: 4px;">Admitted or moving to designated inpatient rehabilitation</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Pregnancy, incarceration, tracheostomy, or CPAP use within 14 days pre-stroke</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06254877" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">CLARITY ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Phase 3 trial evaluating <strong>cilostazol</strong> addition to standard single antiplatelet therapy for secondary prevention in non-cardioembolic stroke/TIA.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Non-cardioembolic ischemic stroke (no ABCD2 check) or high-risk TIA (requires ABCD2 <strong>&ge; 6</strong>) within <strong>180 days</strong></li>
+                                            <li style="margin-bottom: 4px;">Age <strong>&ge; 40 years</strong></li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Cardioembolic stroke source</li>
+                                            <li style="margin-bottom: 4px;">Contraindication to cilostazol (Congestive Heart Failure)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;">ESUS MRI</div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating cerebellar and cardiac vessel wall MRI to reclassify ESUS patients into cardioembolic or large artery atherosclerosis etiologies.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Acute ischemic stroke (ESUS, cardioembolic, or large artery)</li>
+                                            <li style="margin-bottom: 4px;">Scan possible within <strong>6 months</strong> of stroke onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Age &lt; 35 years or eGFR &lt; 35</li>
+                                            <li style="margin-bottom: 4px;">Contraindication to gadolinium-contrast MRI</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;">MOCHA</div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating intracranial vessel wall MRI combined with clinical workups to identify stroke etiology in ESUS patients.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Acute ischemic stroke of ESUS etiology</li>
+                                            <li style="margin-bottom: 4px;">Scan possible within <strong>4 months</strong> of stroke onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Contraindication to MRI or history of bilateral carotid revascularization</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05723926" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">INTERCEPT ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Safety and efficacy evaluation of bilateral carotid filters as an adjunct to Oral Anticoagulation in atrial fibrillation patients.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Ischemic stroke occurred within the <strong>past year</strong></li>
+                                            <li style="margin-bottom: 4px;">History of clinical Atrial Fibrillation on OAC</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">History of spontaneous ICH</li>
+                                            <li style="margin-bottom: 4px;">&ge; 50% stenosis of carotid, subclavian, vertebral or intracranial arteries</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+```
+
+---
+
+## Ischemic Stroke - Outpatient (Day 14 to Month 6)
+
+```html
+<div id="table-ischemic-outpatient" style="overflow-x: auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; font-size: 14px; text-align: left; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #4b2e83; color: white;">
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 15%;">Study</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Hypothesis / Summary</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Eligibility</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 25%;">Key Exclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06254877" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">CLARITY ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Phase 3 trial evaluating <strong>cilostazol</strong> addition to standard single antiplatelet therapy for secondary prevention in non-cardioembolic stroke/TIA.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Non-cardioembolic ischemic stroke (no ABCD2 check) or high-risk TIA (requires ABCD2 <strong>&ge; 6</strong>) within <strong>180 days</strong></li>
+                                            <li style="margin-bottom: 4px;">Age <strong>&ge; 40 years</strong></li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Cardioembolic stroke source</li>
+                                            <li style="margin-bottom: 4px;">Contraindication to cilostazol (Congestive Heart Failure)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;">ESUS MRI</div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating cerebellar and cardiac vessel wall MRI to reclassify ESUS patients into cardioembolic or large artery atherosclerosis etiologies.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Acute ischemic stroke (ESUS, cardioembolic, or large artery)</li>
+                                            <li style="margin-bottom: 4px;">Scan possible within <strong>6 months</strong> of stroke onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Age &lt; 35 years or eGFR &lt; 35</li>
+                                            <li style="margin-bottom: 4px;">Contraindication to gadolinium-contrast MRI</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;">MOCHA</div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating intracranial vessel wall MRI combined with clinical workups to identify stroke etiology in ESUS patients.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Acute ischemic stroke of ESUS etiology</li>
+                                            <li style="margin-bottom: 4px;">Scan possible within <strong>4 months</strong> of stroke onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Contraindication to MRI or history of bilateral carotid revascularization</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06682429" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">TELE-REHAB-2 ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Comparing home-based telerehabilitation to standard care for upper extremity motor outcomes.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Ischemic stroke occurred between <strong>90 - 150 days</strong> prior</li>
+                                            <li style="margin-bottom: 4px;">Age 18 - 80 years with moderate arm weakness</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Pre-stroke mRS &gt; 2</li>
+                                            <li style="margin-bottom: 4px;">Life expectancy &lt; 9 months or recent Botox injection</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06506279" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">MR-PICS ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Feasibility study assessing cortical stimulation via the CorTec Brain Interchange to induce neuroplasticity and improve motor rehab outcomes.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Ischemic stroke occurred <strong>&gt; 6 months</strong> prior</li>
+                                            <li style="margin-bottom: 4px;">Age 22 - 75 years with pre-stroke mRS 3 - 4</li>
+                                            <li style="margin-bottom: 4px;">Moderate unilateral upper extremity weakness</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">On therapeutic anticoagulation or history of seizure</li>
+                                            <li style="margin-bottom: 4px;">History of deep vein thrombosis, pulmonary emboli, or spontaneous ICH</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05723926" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">INTERCEPT ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Safety and efficacy evaluation of bilateral carotid filters as an adjunct to Oral Anticoagulation in atrial fibrillation patients.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Ischemic stroke occurred within the <strong>past year</strong></li>
+                                            <li style="margin-bottom: 4px;">History of clinical Atrial Fibrillation on OAC</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">History of spontaneous ICH</li>
+                                            <li style="margin-bottom: 4px;">&ge; 50% stenosis of carotid, subclavian, vertebral or intracranial arteries</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+```
+
+---
+
+## Intracranial Hemorrhage (ICH) - Acute (Onset ≤ 24 Hours)
+
+```html
+<div id="table-ich-hyperacute" style="overflow-x: auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; font-size: 14px; text-align: left; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #4b2e83; color: white;">
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 15%;">Study</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Hypothesis / Summary</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Eligibility</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 25%;">Key Exclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT07260916" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">MINUTE ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Prospective, randomized trial evaluating the clinical utility of ultra-early SCUBA neuroendoscopic evacuation of Basal Ganglia Hemorrhages.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Basal Ganglia hemorrhage <strong>&ge; 20mL</strong></li>
+                                            <li style="margin-bottom: 4px;">Within <strong>16 hours</strong> of last known well</li>
+                                            <li style="margin-bottom: 4px;">NIHSS <strong>&ge; 6</strong></li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Suspected secondary cause for ICH</li>
+                                            <li style="margin-bottom: 4px;">Infratentorial or thalamic hemorrhage</li>
+                                            <li style="margin-bottom: 4px;">GCS score &lt; 7 at presentation</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03936361" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SATURN ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating continuation vs discontinuation of statins on lobar ICH recurrence.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Spontaneous lobar ICH</li>
+                                            <li style="margin-bottom: 4px;">Can be randomized within <strong>7 days</strong> of onset</li>
+                                            <li style="margin-bottom: 4px;">Age <strong>&ge; 50 years</strong>, taking statin at onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">ICH score &gt; 3 or pre-stroke mRS &gt; 3</li>
+                                            <li style="margin-bottom: 4px;">Suspected secondary cause for ICH</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+```
+
+---
+
+## Intracranial Hemorrhage (ICH) - Inpatient (Admission to Day 30)
+
+```html
+<div id="table-ich-inpatient" style="overflow-x: auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; font-size: 14px; text-align: left; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #4b2e83; color: white;">
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 15%;">Study</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Hypothesis / Summary</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Eligibility</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 25%;">Key Exclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03936361" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SATURN ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating continuation vs discontinuation of statins on lobar ICH recurrence.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Spontaneous lobar ICH</li>
+                                            <li style="margin-bottom: 4px;">Can be randomized within <strong>7 days</strong> of onset</li>
+                                            <li style="margin-bottom: 4px;">Age <strong>&ge; 50 years</strong>, taking statin at onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">ICH score &gt; 3 or pre-stroke mRS &gt; 3</li>
+                                            <li style="margin-bottom: 4px;">Suspected secondary cause for ICH</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06722755" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SCOUTS-3 ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        CPAP support compliance and recovery assessment in patients with OSA undergoing inpatient rehabilitation.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Acute intraparenchymal hemorrhage (IPH) within <strong>past 30 days</strong></li>
+                                            <li style="margin-bottom: 4px;">Admitted or moving to designated inpatient rehabilitation</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Pregnancy, incarceration, tracheostomy, or pre-stroke CPAP use</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03907046" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">ASPIRE ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating if <strong>apixaban</strong> is superior to aspirin for stroke prevention in patients with recent ICH and non-valvular atrial fibrillation.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Spontaneous Intracerebral Hemorrhage (ICH)</li>
+                                            <li style="margin-bottom: 4px;">Non-valvular Atrial Fibrillation (AF)</li>
+                                            <li style="margin-bottom: 4px;">Randomized within <strong>14 - 180 days</strong> of onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Suspected secondary cause for ICH</li>
+                                            <li style="margin-bottom: 4px;">Clear ongoing therapeutic indication for anticoagulation/antiplatelet</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+```
+
+---
+
+## Intracranial Hemorrhage (ICH) - Outpatient (Day 14 to Month 6)
+
+```html
+<div id="table-ich-outpatient" style="overflow-x: auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; font-size: 14px; text-align: left; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #4b2e83; color: white;">
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 15%;">Study</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Hypothesis / Summary</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Eligibility</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 25%;">Key Exclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03907046" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">ASPIRE ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating if <strong>apixaban</strong> is superior to aspirin for stroke prevention in patients with recent ICH and non-valvular atrial fibrillation.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Spontaneous Intracerebral Hemorrhage (ICH)</li>
+                                            <li style="margin-bottom: 4px;">Non-valvular Atrial Fibrillation (AF)</li>
+                                            <li style="margin-bottom: 4px;">Randomized within <strong>14 - 180 days</strong> of onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Suspected secondary cause for ICH</li>
+                                            <li style="margin-bottom: 4px;">Clear ongoing therapeutic indication for anticoagulation/antiplatelet</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06682429" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">TELE-REHAB-2 ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Home telerehab course for arm motor outcomes in stroke/ICH survivors.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Spontaneous ICH occurred between <strong>90 - 150 days</strong> prior</li>
+                                            <li style="margin-bottom: 4px;">Age 18 - 80 years with moderate arm weakness</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Pre-stroke mRS &gt; 2</li>
+                                            <li style="margin-bottom: 4px;">Life expectancy &lt; 9 months or recent Botox injection</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06393712" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">CAPPRICORN-1 ↗</a></div>
+                                        <span class="badge closed" style="margin-top: 8px;">Closed</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Randomized trial evaluating ALN-APP in patients with CAA.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Probable CAA by Boston Criteria of MRI</li>
+                                            <li style="margin-bottom: 4px;">History of ICH</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Closed to enrollment.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+```
+
+---

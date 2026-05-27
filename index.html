@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Clinical Trials Public Reference Demo</title>
+    <meta name="description" content="A standalone public reference demo for stroke trial and study eligibility tables. Not an official any organization system, not patient-care advice, and not approved for EHR, intranet, or clinical workflow embedding without governance review.">
+    <style>
+        :root {
+            --brand-purple: #4b2e83;
+            --brand-purple-hover: #3b2466;
+            --brand-purple-light: rgba(75, 46, 131, 0.08);
+            --brand-gold: #85754d;
+            --brand-gold-light: #b7a57a;
+            
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-header: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            
+            --status-enrolling: #10b981;
+            --status-soon: #f59e0b;
+            --status-closed: #94a3b8;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            --transition-all: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-header: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --brand-purple-light: rgba(167, 139, 250, 0.15);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.5;
+            transition: var(--transition-all);
+            padding-bottom: 5rem;
+        }
+
+        header {
+            background: var(--bg-card);
+            color: var(--text-main);
+            padding: 1.25rem 2rem;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo-title {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        header h1 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--brand-purple);
+        }
+
+        [data-theme="dark"] header h1 {
+            color: #a78bfa;
+        }
+
+        header h1 span {
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        header p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            font-weight: 500;
+        }
+
+        .theme-toggle-btn {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.45rem 0.9rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition-all);
+        }
+
+        .theme-toggle-btn:hover {
+            background: rgba(75, 46, 131, 0.05);
+            border-color: var(--brand-purple);
+        }
+
+        [data-theme="dark"] .theme-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #a78bfa;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Tabs styling */
+        .tabs-nav {
+            display: flex;
+            background: rgba(75, 46, 131, 0.04);
+            padding: 0.4rem;
+            border-radius: 14px;
+            margin: 0.5rem auto 0.75rem auto;
+            border: 1px solid var(--border-color);
+            gap: 0.35rem;
+            max-width: 750px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .global-actions-bar {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto 1.25rem auto;
+            max-width: 750px;
+        }
+
+        .global-actions-bar .action-btn {
+            color: var(--text-muted);
+            padding: 0.3rem 0.75rem;
+            font-size: 0.75rem;
+            border-radius: 6px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .global-actions-bar .action-btn:hover {
+            color: var(--text-main);
+            background: rgba(75, 46, 131, 0.04);
+            border-color: var(--brand-purple);
+            box-shadow: var(--shadow-md);
+        }
+
+        [data-theme="dark"] .global-actions-bar .action-btn:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: #a78bfa;
+        }
+
+        [data-theme="dark"] .tabs-nav {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.8rem 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-all);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(75, 46, 131, 0.03);
+        }
+
+        [data-theme="dark"] .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .tab-btn.active {
+            color: white;
+            background: var(--brand-purple);
+            box-shadow: 0 4px 14px rgba(75, 46, 131, 0.2);
+        }
+
+        [data-theme="dark"] .tab-btn.active {
+            color: #0f172a;
+            background: #a78bfa;
+            box-shadow: 0 4px 14px rgba(167, 139, 250, 0.3);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Timing Grouping Title */
+        .timing-section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--brand-purple);
+            margin: 2.5rem 0 1.25rem 0;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .timing-section-title {
+            color: #a78bfa;
+        }
+
+        /* Badges styling */
+        .badge {
+            font-size: 9px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            text-transform: uppercase;
+            color: white;
+            letter-spacing: 0.05em;
+        }
+        .badge.refer, .badge.enrolling { background-color: var(--status-enrolling); }
+        .badge.future, .badge.soon { background-color: var(--status-soon); }
+        .badge.closed { background-color: var(--status-closed); }
+
+        /* Bedside table section cards */
+        .table-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-top: 1rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-all);
+        }
+
+        .table-section-header {
+            background: var(--brand-purple-light);
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            cursor: pointer;
+            user-select: none;
+            transition: var(--transition-all);
+        }
+
+        .table-section-header:hover {
+            background: var(--border-color);
+        }
+
+        [data-theme="dark"] .table-section-header:hover {
+            background: #27272a;
+        }
+
+        .table-section-header h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        /* Chevron rotating animation */
+        .chevron-icon {
+            display: inline-block;
+            font-size: 1.1rem;
+            color: var(--brand-purple);
+            transform: rotate(-90deg);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="dark"] .chevron-icon {
+            color: #a78bfa;
+        }
+
+        .table-section.expanded .chevron-icon {
+            transform: rotate(0deg);
+        }
+
+        /* Global Developer / Intranet Embed Panel (Compact footprint) */
+        .global-controls-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.6rem 0.85rem;
+            box-shadow: var(--shadow-sm);
+            max-width: 650px;
+            margin: 2.5rem auto 0 auto;
+        }
+
+        .global-controls-card .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .global-controls-card .card-icon {
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .global-controls-card .card-title-desc {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .global-controls-card .card-title-desc h2 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--brand-purple);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        [data-theme="dark"] .global-controls-card .card-title-desc h2 {
+            color: #a78bfa;
+        }
+
+        .global-controls-card .card-title-desc p {
+            font-size: 0.72rem;
+            color: var(--text-main);
+            margin: 0;
+            opacity: 0.75;
+            line-height: 1.3;
+        }
+
+        .global-buttons-wrapper {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .global-controls-card .action-btn {
+            padding: 0.3rem 0.55rem;
+            font-size: 0.72rem;
+            border-radius: 6px;
+        }
+
+        .global-buttons-wrapper .btn-primary {
+            background: var(--brand-purple);
+            color: white;
+            border-color: var(--brand-purple);
+        }
+
+        .global-buttons-wrapper .btn-primary:hover {
+            background: var(--brand-purple-hover);
+            border-color: var(--brand-purple-hover);
+        }
+
+        [data-theme="dark"] .global-buttons-wrapper .btn-primary {
+            background: #a78bfa;
+            color: #0f172a;
+            border-color: #a78bfa;
+        }
+
+        [data-theme="dark"] .global-buttons-wrapper .btn-primary:hover {
+            background: #c084fc;
+            border-color: #c084fc;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.3rem 0.6rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: var(--transition-all);
+        }
+
+        .action-btn:hover {
+            border-color: var(--brand-gold);
+            background: var(--bg-main);
+        }
+
+        .preview-area {
+            padding: 1.25rem;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .preview-area {
+            background: #ffffff;
+            color: #1e293b;
+        }
+
+        /* Source Code Area */
+        .code-area {
+            display: none;
+            background: #1e293b;
+            color: #f1f5f9;
+            padding: 1.25rem;
+            font-family: Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            position: relative;
+            border-bottom: 1px solid var(--border-color);
+            max-height: 350px;
+        }
+
+        .code-area pre {
+            margin: 0;
+        }
+
+        /* Toast styling */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1e293b;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon {
+            color: var(--status-enrolling);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .tabs-nav {
+                flex-direction: column;
+                gap: 0.25rem;
+                max-width: 100%;
+                border-radius: 10px;
+            }
+            .tab-btn {
+                border-radius: 8px;
+                padding: 0.75rem 1rem;
+            }
+            .tab-btn.active {
+                box-shadow: none;
+            }
+            .table-section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .action-buttons {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+    
+        /* PWA Install Button */
+        #installAppBtn {
+            background-color: var(--brand-purple);
+            color: white;
+            border: none;
+            display: none;
+            align-items: center;
+            gap: 0.4rem;
+            margin-right: 0.5rem;
+        }
+        #installAppBtn:hover {
+            background-color: var(--brand-purple-hover);
+        }
+        [data-theme="dark"] #installAppBtn {
+            background-color: #a78bfa;
+            color: #0f172a;
+        }
+        [data-theme="dark"] #installAppBtn:hover {
+            background-color: #c084fc;
+        }
+
+        /* Trial Links styling */
+        .preview-area td a {
+            transition: var(--transition-all);
+            color: var(--brand-purple);
+            text-decoration: none;
+        }
+        .preview-area td a:hover {
+            color: var(--brand-gold) !important;
+            text-decoration: underline !important;
+        }
+        [data-theme="dark"] .preview-area td a {
+            color: #a78bfa;
+        }
+        [data-theme="dark"] .preview-area td a:hover {
+            color: #d9c383 !important;
+        }
+
+
+
+    </style>
+
+    <!-- PWA support -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <meta name="theme-color" content="#4b2e83">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon.svg">
+
+</head>
+<body>
+    <div style="background:#fffbeb;color:#92400e;border-bottom:1px solid #f59e0b;padding:0.85rem 1.5rem;font-size:0.9rem;line-height:1.45;">
+        <strong>Public reference demo.</strong> Do not use this personal GitHub Pages site as an official any organization,
+        EHR, intranet, recruitment, or patient-care source without study-owner, IRB/HSD where applicable, clinic
+        leadership, and IT/security approval. Verify current trial status and eligibility criteria against the
+        approved source of truth before any clinical or recruitment action.
+    </div>
+
+    <header>
+        <div class="header-container">
+            <div class="header-logo-title">
+                <h1>Stroke Studies</h1>
+            </div>
+            <button class="theme-toggle-btn" id="installAppBtn">📱 Install App</button>
+            <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Dynamic Main Tabs -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('ischemic')">🧠 Ischemic Stroke</button>
+            <button class="tab-btn" onclick="switchTab('ich')">🩸 Intracranial Hemorrhage (ICH)</button>
+        </div>
+
+        <div class="global-actions-bar">
+            <button class="action-btn" id="expandCollapseAllBtn" onclick="toggleAllSections()">↕ Collapse All Tables</button>
+        </div>
+
+        <!-- ==================== ISCHEMIC TAB PANEL ==================== -->
+        <div class="tab-panel active" id="panel-ischemic">
+            
+            <!-- Hyperacute Section -->
+            <div class="timing-section-title">⚡ Acute (Onset &le; 24 Hours)</div>
+
+            <div class="table-section expanded" id="section-ischemic-hyperacute">
+                <div class="table-section-header" onclick="toggleSection('section-ischemic-hyperacute')">
+                    <div class="header-title-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span class="chevron-icon">▼</span>
+                        <h3>Ischemic Stroke - Acute (Onset &le; 24 Hours)</h3>
+                    </div>
+                    <div class="action-buttons" onclick="event.stopPropagation()">
+                        <button class="action-btn" onclick="copyTableHtml('table-ischemic-hyperacute')">📋 Copy HTML</button>
+                        <button class="action-btn" onclick="toggleCodeView('code-ischemic-hyperacute')">💻 View Code</button>
+                    </div>
+                </div>
+                <div class="table-section-body">
+                    <div class="code-area" id="code-ischemic-hyperacute">
+                        <pre><code class="html-escape" data-target="table-ischemic-hyperacute"></code></pre>
+                    </div>
+                    <div class="preview-area">
+                    <div id="table-ischemic-hyperacute" style="overflow-x: auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; font-size: 14px; text-align: left; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #4b2e83; color: white;">
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 15%;">Study</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Hypothesis / Summary</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Eligibility</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 25%;">Key Exclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05948566" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SISTER ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        A Phase-2, prospective, randomized, placebo-controlled, blinded, dose finding trial determining the safety and preliminary efficacy of <strong>TS23</strong> (monoclonal antibody against alpha-2 antiplasmin) in acute ischemic stroke.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Anterior circulation acute ischemic stroke</li>
+                                            <li style="margin-bottom: 4px;">Within <strong>4.5 - 24 hours</strong> of onset</li>
+                                            <li style="margin-bottom: 4px;">NIHSS <strong>&ge; 4</strong></li>
+                                            <li style="margin-bottom: 4px;">ASPECTS <strong>&ge; 6</strong> on CT</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Received thrombolysis or EVT with clot engagement</li>
+                                            <li style="margin-bottom: 4px;">Known stroke in past 90 days</li>
+                                            <li style="margin-bottom: 4px;">Pre-stroke mRS &gt; 2</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06289985" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">STEP ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Randomized, Multifactorial, Adaptive, Platform trial optimizing care for AIS due to large or medium vessel occlusions (LVOs and MVOs).
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <div style="font-weight: 600; margin-bottom: 4px; font-size: 12px; color: #4b2e83;">Eligible Populations:</div>
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;"><strong>LVO Population:</strong> Complete occlusion of intracranial ICA or M1 MCA, with mild deficits (NIHSS 0 - 5)</li>
+                                            <li style="margin-bottom: 4px;"><strong>MVO Population:</strong> Non-dominant or Co-dominant M2 and M3 MCA occlusions, with NIHSS <strong>&ge; 8</strong></li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">CT ASPECTS &lt; 6</li>
+                                            <li style="margin-bottom: 4px;">Acute occlusions in multiple vascular territories or tandem occlusions</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT04856696" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">TESTED ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        A prospective, observational study for persons with a pre-stroke modified Rankin Scale (mRS) 3-4 experiencing an LVO-AIS, comparing the effectiveness of EVT to medical management.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">AIS presenting within <strong>24 hours</strong> of onset</li>
+                                            <li style="margin-bottom: 4px;">Occlusion of ICA, M1, or dominant M2</li>
+                                            <li style="margin-bottom: 4px;">Pre-stroke mRS <strong>3 - 4</strong></li>
+                                            <li style="margin-bottom: 4px;">NIHSS <strong>&ge; 6</strong></li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Terminal illness at time of stroke</li>
+                                            <li style="margin-bottom: 4px;">Stroke onset during acute inpatient facility stay</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div> <!-- Closing table-section-body -->
+            </div>
+
+            <!-- Inpatient Section -->
+            <div class="timing-section-title">🏥 Inpatient (Admission to Day 30)</div>
+
+            <div class="table-section expanded" id="section-ischemic-inpatient">
+                <div class="table-section-header" onclick="toggleSection('section-ischemic-inpatient')">
+                    <div class="header-title-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span class="chevron-icon">▼</span>
+                        <h3>Ischemic Stroke - Inpatient (Admission to Day 30)</h3>
+                    </div>
+                    <div class="action-buttons" onclick="event.stopPropagation()">
+                        <button class="action-btn" onclick="copyTableHtml('table-ischemic-inpatient')">📋 Copy HTML</button>
+                        <button class="action-btn" onclick="toggleCodeView('code-ischemic-inpatient')">💻 View Code</button>
+                    </div>
+                </div>
+                <div class="table-section-body">
+                    <div class="code-area" id="code-ischemic-inpatient">
+                        <pre><code class="html-escape" data-target="table-ischemic-inpatient"></code></pre>
+                    </div>
+                    <div class="preview-area">
+                    <div id="table-ischemic-inpatient" style="overflow-x: auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; font-size: 14px; text-align: left; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #4b2e83; color: white;">
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 15%;">Study</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Hypothesis / Summary</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Eligibility</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 25%;">Key Exclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05338697" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">VERIFY ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Validating CMS structure/function measures (TMS motor evoked potentials and MRI lesion load) to establish early prognostic data for upper extremity recovery outcomes.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Unilaterally symptomatic acute ischemic stroke with motor deficits</li>
+                                            <li style="margin-bottom: 4px;">Consented within <strong>24 - 96 hours</strong> of LNW</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Pre-stroke upper extremity condition limiting use</li>
+                                            <li style="margin-bottom: 4px;">Dense sensory loss (NIHSS score = 2) or seizure since onset</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06722755" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SCOUTS-3 ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating an intensive CPAP support intervention to improve adherence and recovery in stroke survivors with Obstructive Sleep Apnea (OSA) undergoing inpatient rehab.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Acute ischemic stroke within <strong>past 30 days</strong></li>
+                                            <li style="margin-bottom: 4px;">Admitted or moving to designated inpatient rehabilitation</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Pregnancy, incarceration, tracheostomy, or CPAP use within 14 days pre-stroke</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06254877" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">CLARITY ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Phase 3 trial evaluating <strong>cilostazol</strong> addition to standard single antiplatelet therapy for secondary prevention in non-cardioembolic stroke/TIA.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Non-cardioembolic ischemic stroke (no ABCD2 check) or high-risk TIA (requires ABCD2 <strong>&ge; 6</strong>) within <strong>180 days</strong></li>
+                                            <li style="margin-bottom: 4px;">Age <strong>&ge; 40 years</strong></li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Cardioembolic stroke source</li>
+                                            <li style="margin-bottom: 4px;">Contraindication to cilostazol (Congestive Heart Failure)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;">ESUS MRI</div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating cerebellar and cardiac vessel wall MRI to reclassify ESUS patients into cardioembolic or large artery atherosclerosis etiologies.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Acute ischemic stroke (ESUS, cardioembolic, or large artery)</li>
+                                            <li style="margin-bottom: 4px;">Scan possible within <strong>6 months</strong> of stroke onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Age &lt; 35 years or eGFR &lt; 35</li>
+                                            <li style="margin-bottom: 4px;">Contraindication to gadolinium-contrast MRI</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;">MOCHA</div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating intracranial vessel wall MRI combined with clinical workups to identify stroke etiology in ESUS patients.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Acute ischemic stroke of ESUS etiology</li>
+                                            <li style="margin-bottom: 4px;">Scan possible within <strong>4 months</strong> of stroke onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Contraindication to MRI or history of bilateral carotid revascularization</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05723926" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">INTERCEPT ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Safety and efficacy evaluation of bilateral carotid filters as an adjunct to Oral Anticoagulation in atrial fibrillation patients.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Ischemic stroke occurred within the <strong>past year</strong></li>
+                                            <li style="margin-bottom: 4px;">History of clinical Atrial Fibrillation on OAC</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">History of spontaneous ICH</li>
+                                            <li style="margin-bottom: 4px;">&ge; 50% stenosis of carotid, subclavian, vertebral or intracranial arteries</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div> <!-- Closing table-section-body -->
+            </div>
+
+            <!-- Outpatient Section -->
+            <div class="timing-section-title">🏡 Outpatient (Day 14 to Month 6+)</div>
+
+            <div class="table-section expanded" id="section-ischemic-outpatient">
+                <div class="table-section-header" onclick="toggleSection('section-ischemic-outpatient')">
+                    <div class="header-title-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span class="chevron-icon">▼</span>
+                        <h3>Ischemic Stroke - Outpatient (Day 14 to Month 6)</h3>
+                    </div>
+                    <div class="action-buttons" onclick="event.stopPropagation()">
+                        <button class="action-btn" onclick="copyTableHtml('table-ischemic-outpatient')">📋 Copy HTML</button>
+                        <button class="action-btn" onclick="toggleCodeView('code-ischemic-outpatient')">💻 View Code</button>
+                    </div>
+                </div>
+                <div class="table-section-body">
+                    <div class="code-area" id="code-ischemic-outpatient">
+                        <pre><code class="html-escape" data-target="table-ischemic-outpatient"></code></pre>
+                    </div>
+                    <div class="preview-area">
+                    <div id="table-ischemic-outpatient" style="overflow-x: auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; font-size: 14px; text-align: left; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #4b2e83; color: white;">
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 15%;">Study</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Hypothesis / Summary</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Eligibility</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 25%;">Key Exclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06254877" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">CLARITY ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Phase 3 trial evaluating <strong>cilostazol</strong> addition to standard single antiplatelet therapy for secondary prevention in non-cardioembolic stroke/TIA.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Non-cardioembolic ischemic stroke (no ABCD2 check) or high-risk TIA (requires ABCD2 <strong>&ge; 6</strong>) within <strong>180 days</strong></li>
+                                            <li style="margin-bottom: 4px;">Age <strong>&ge; 40 years</strong></li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Cardioembolic stroke source</li>
+                                            <li style="margin-bottom: 4px;">Contraindication to cilostazol (Congestive Heart Failure)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;">ESUS MRI</div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating cerebellar and cardiac vessel wall MRI to reclassify ESUS patients into cardioembolic or large artery atherosclerosis etiologies.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Acute ischemic stroke (ESUS, cardioembolic, or large artery)</li>
+                                            <li style="margin-bottom: 4px;">Scan possible within <strong>6 months</strong> of stroke onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Age &lt; 35 years or eGFR &lt; 35</li>
+                                            <li style="margin-bottom: 4px;">Contraindication to gadolinium-contrast MRI</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;">MOCHA</div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating intracranial vessel wall MRI combined with clinical workups to identify stroke etiology in ESUS patients.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Acute ischemic stroke of ESUS etiology</li>
+                                            <li style="margin-bottom: 4px;">Scan possible within <strong>4 months</strong> of stroke onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Contraindication to MRI or history of bilateral carotid revascularization</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06682429" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">TELE-REHAB-2 ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Comparing home-based telerehabilitation to standard care for upper extremity motor outcomes.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Ischemic stroke occurred between <strong>90 - 150 days</strong> prior</li>
+                                            <li style="margin-bottom: 4px;">Age 18 - 80 years with moderate arm weakness</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Pre-stroke mRS &gt; 2</li>
+                                            <li style="margin-bottom: 4px;">Life expectancy &lt; 9 months or recent Botox injection</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06506279" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">MR-PICS ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Feasibility study assessing cortical stimulation via the CorTec Brain Interchange to induce neuroplasticity and improve motor rehab outcomes.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Ischemic stroke occurred <strong>&gt; 6 months</strong> prior</li>
+                                            <li style="margin-bottom: 4px;">Age 22 - 75 years with pre-stroke mRS 3 - 4</li>
+                                            <li style="margin-bottom: 4px;">Moderate unilateral upper extremity weakness</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">On therapeutic anticoagulation or history of seizure</li>
+                                            <li style="margin-bottom: 4px;">History of deep vein thrombosis, pulmonary emboli, or spontaneous ICH</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05723926" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">INTERCEPT ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Safety and efficacy evaluation of bilateral carotid filters as an adjunct to Oral Anticoagulation in atrial fibrillation patients.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Ischemic stroke occurred within the <strong>past year</strong></li>
+                                            <li style="margin-bottom: 4px;">History of clinical Atrial Fibrillation on OAC</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">History of spontaneous ICH</li>
+                                            <li style="margin-bottom: 4px;">&ge; 50% stenosis of carotid, subclavian, vertebral or intracranial arteries</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div> <!-- Closing table-section-body -->
+            </div>
+
+        </div>
+
+        <!-- ==================== ICH TAB PANEL ==================== -->
+        <div class="tab-panel" id="panel-ich">
+            
+            <!-- Hyperacute Section -->
+            <div class="timing-section-title">⚡ Acute (Onset &le; 24 Hours)</div>
+
+            <div class="table-section expanded" id="section-ich-hyperacute">
+                <div class="table-section-header" onclick="toggleSection('section-ich-hyperacute')">
+                    <div class="header-title-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span class="chevron-icon">▼</span>
+                        <h3>Intracranial Hemorrhage (ICH) - Acute (Onset &le; 24 Hours)</h3>
+                    </div>
+                    <div class="action-buttons" onclick="event.stopPropagation()">
+                        <button class="action-btn" onclick="copyTableHtml('table-ich-hyperacute')">📋 Copy HTML</button>
+                        <button class="action-btn" onclick="toggleCodeView('code-ich-hyperacute')">💻 View Code</button>
+                    </div>
+                </div>
+                <div class="table-section-body">
+                    <div class="code-area" id="code-ich-hyperacute">
+                        <pre><code class="html-escape" data-target="table-ich-hyperacute"></code></pre>
+                    </div>
+                    <div class="preview-area">
+                    <div id="table-ich-hyperacute" style="overflow-x: auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; font-size: 14px; text-align: left; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #4b2e83; color: white;">
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 15%;">Study</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Hypothesis / Summary</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Eligibility</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 25%;">Key Exclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT07260916" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">MINUTE ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Prospective, randomized trial evaluating the clinical utility of ultra-early SCUBA neuroendoscopic evacuation of Basal Ganglia Hemorrhages.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Basal Ganglia hemorrhage <strong>&ge; 20mL</strong></li>
+                                            <li style="margin-bottom: 4px;">Within <strong>16 hours</strong> of last known well</li>
+                                            <li style="margin-bottom: 4px;">NIHSS <strong>&ge; 6</strong></li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Suspected secondary cause for ICH</li>
+                                            <li style="margin-bottom: 4px;">Infratentorial or thalamic hemorrhage</li>
+                                            <li style="margin-bottom: 4px;">GCS score &lt; 7 at presentation</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03936361" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SATURN ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating continuation vs discontinuation of statins on lobar ICH recurrence.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Spontaneous lobar ICH</li>
+                                            <li style="margin-bottom: 4px;">Can be randomized within <strong>7 days</strong> of onset</li>
+                                            <li style="margin-bottom: 4px;">Age <strong>&ge; 50 years</strong>, taking statin at onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">ICH score &gt; 3 or pre-stroke mRS &gt; 3</li>
+                                            <li style="margin-bottom: 4px;">Suspected secondary cause for ICH</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div> <!-- Closing table-section-body -->
+            </div>
+
+            <!-- Inpatient Section -->
+            <div class="timing-section-title">🏥 Inpatient (Admission to Day 30)</div>
+
+            <div class="table-section expanded" id="section-ich-inpatient">
+                <div class="table-section-header" onclick="toggleSection('section-ich-inpatient')">
+                    <div class="header-title-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span class="chevron-icon">▼</span>
+                        <h3>Intracranial Hemorrhage (ICH) - Inpatient (Admission to Day 30)</h3>
+                    </div>
+                    <div class="action-buttons" onclick="event.stopPropagation()">
+                        <button class="action-btn" onclick="copyTableHtml('table-ich-inpatient')">📋 Copy HTML</button>
+                        <button class="action-btn" onclick="toggleCodeView('code-ich-inpatient')">💻 View Code</button>
+                    </div>
+                </div>
+                <div class="table-section-body">
+                    <div class="code-area" id="code-ich-inpatient">
+                        <pre><code class="html-escape" data-target="table-ich-inpatient"></code></pre>
+                    </div>
+                    <div class="preview-area">
+                    <div id="table-ich-inpatient" style="overflow-x: auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; font-size: 14px; text-align: left; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #4b2e83; color: white;">
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 15%;">Study</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Hypothesis / Summary</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Eligibility</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 25%;">Key Exclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03936361" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SATURN ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating continuation vs discontinuation of statins on lobar ICH recurrence.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Spontaneous lobar ICH</li>
+                                            <li style="margin-bottom: 4px;">Can be randomized within <strong>7 days</strong> of onset</li>
+                                            <li style="margin-bottom: 4px;">Age <strong>&ge; 50 years</strong>, taking statin at onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">ICH score &gt; 3 or pre-stroke mRS &gt; 3</li>
+                                            <li style="margin-bottom: 4px;">Suspected secondary cause for ICH</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06722755" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SCOUTS-3 ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        CPAP support compliance and recovery assessment in patients with OSA undergoing inpatient rehabilitation.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Acute intraparenchymal hemorrhage (IPH) within <strong>past 30 days</strong></li>
+                                            <li style="margin-bottom: 4px;">Admitted or moving to designated inpatient rehabilitation</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Pregnancy, incarceration, tracheostomy, or pre-stroke CPAP use</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03907046" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">ASPIRE ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating if <strong>apixaban</strong> is superior to aspirin for stroke prevention in patients with recent ICH and non-valvular atrial fibrillation.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Spontaneous Intracerebral Hemorrhage (ICH)</li>
+                                            <li style="margin-bottom: 4px;">Non-valvular Atrial Fibrillation (AF)</li>
+                                            <li style="margin-bottom: 4px;">Randomized within <strong>14 - 180 days</strong> of onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Suspected secondary cause for ICH</li>
+                                            <li style="margin-bottom: 4px;">Clear ongoing therapeutic indication for anticoagulation/antiplatelet</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div> <!-- Closing table-section-body -->
+            </div>
+
+            <!-- Outpatient Section -->
+            <div class="timing-section-title">🏡 Outpatient (Day 14 to Month 6+)</div>
+
+            <div class="table-section expanded" id="section-ich-outpatient">
+                <div class="table-section-header" onclick="toggleSection('section-ich-outpatient')">
+                    <div class="header-title-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span class="chevron-icon">▼</span>
+                        <h3>Intracranial Hemorrhage (ICH) - Outpatient (Day 14 to Month 6)</h3>
+                    </div>
+                    <div class="action-buttons" onclick="event.stopPropagation()">
+                        <button class="action-btn" onclick="copyTableHtml('table-ich-outpatient')">📋 Copy HTML</button>
+                        <button class="action-btn" onclick="toggleCodeView('code-ich-outpatient')">💻 View Code</button>
+                    </div>
+                </div>
+                <div class="table-section-body">
+                    <div class="code-area" id="code-ich-outpatient">
+                        <pre><code class="html-escape" data-target="table-ich-outpatient"></code></pre>
+                    </div>
+                    <div class="preview-area">
+                    <div id="table-ich-outpatient" style="overflow-x: auto; font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; font-size: 14px; text-align: left; background-color: #ffffff;">
+                            <thead>
+                                <tr style="background-color: #4b2e83; color: white;">
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 15%;">Study</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Hypothesis / Summary</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 30%;">Eligibility</th>
+                                    <th style="padding: 12px 16px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; border-bottom: 3px solid #85754d; width: 25%;">Key Exclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03907046" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">ASPIRE ↗</a></div>
+                                        <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Evaluating if <strong>apixaban</strong> is superior to aspirin for stroke prevention in patients with recent ICH and non-valvular atrial fibrillation.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Spontaneous Intracerebral Hemorrhage (ICH)</li>
+                                            <li style="margin-bottom: 4px;">Non-valvular Atrial Fibrillation (AF)</li>
+                                            <li style="margin-bottom: 4px;">Randomized within <strong>14 - 180 days</strong> of onset</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Suspected secondary cause for ICH</li>
+                                            <li style="margin-bottom: 4px;">Clear ongoing therapeutic indication for anticoagulation/antiplatelet</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06682429" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">TELE-REHAB-2 ↗</a></div>
+                                        <span class="badge soon" style="margin-top: 8px;">Soon</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Home telerehab course for arm motor outcomes in stroke/ICH survivors.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Spontaneous ICH occurred between <strong>90 - 150 days</strong> prior</li>
+                                            <li style="margin-bottom: 4px;">Age 18 - 80 years with moderate arm weakness</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Pre-stroke mRS &gt; 2</li>
+                                            <li style="margin-bottom: 4px;">Life expectancy &lt; 9 months or recent Botox injection</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 16px; vertical-align: top;">
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06393712" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">CAPPRICORN-1 ↗</a></div>
+                                        <span class="badge closed" style="margin-top: 8px;">Closed</span>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
+                                        Randomized trial evaluating ALN-APP in patients with CAA.
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Probable CAA by Boston Criteria of MRI</li>
+                                            <li style="margin-bottom: 4px;">History of ICH</li>
+                                        </ul>
+                                    </td>
+                                    <td style="padding: 16px; vertical-align: top; color: #334155;">
+                                        <ul style="padding-left: 20px; margin: 0; line-height: 1.4;">
+                                            <li style="margin-bottom: 4px;">Closed to enrollment.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div> <!-- Closing table-section-body -->
+            </div>
+
+        </div>
+
+        <!-- Embed & Global Actions Control Panel -->
+        <div class="global-controls-card">
+            <div class="card-header">
+                <span class="card-icon">⚙️</span>
+                <div class="card-title-desc">
+                    <h2>Reference Code Preview</h2>
+                    <p>Copy or reuse code only in approved environments after study-owner, IRB/HSD where applicable, clinic leadership, and IT/security review. Do not iframe this personal GitHub Pages URL into official sites, intranets, EHR wikis, or patient-facing pages.</p>
+                </div>
+            </div>
+            <div class="global-buttons-wrapper">
+                <button class="action-btn btn-primary" onclick="copyFullAppHtml()">📋 Copy Full App HTML</button>
+                <button class="action-btn" onclick="toggleFullCodeView()">💻 View Full App Code</button>
+            </div>
+            <!-- Full App Source Code Area -->
+            <div class="code-area" id="full-app-code-area" style="display: none; margin-top: 1rem; border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <span style="font-weight: 600; color: #a78bfa; font-size: 0.85rem;">index.html (Full Source)</span>
+                    <button class="action-btn" onclick="copyFullAppHtml()" style="background: #334155; color: white; border-color: #4b5563; font-size: 0.75rem; padding: 0.25rem 0.5rem;">Copy Code</button>
+                </div>
+                <pre><code style="white-space: pre-wrap; word-break: break-all; display: block; max-height: 250px; overflow-y: auto;"></code></pre>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="toast" id="toast">
+        <span class="toast-icon">✓</span>
+        <span id="toastMessage">Copied to Clipboard!</span>
+    </div>
+
+    <script>
+        
+        // Service Worker registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registered:', reg.scope))
+                    .catch(err => console.error('Service Worker registration failed:', err));
+            });
+        }
+
+        // PWA Install Prompt Logic
+        let deferredPrompt;
+        const installBtn = document.getElementById('installAppBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (installBtn) {
+                installBtn.style.display = 'flex';
+            }
+        });
+
+        if (installBtn) {
+            installBtn.addEventListener('click', async () => {
+                if (!deferredPrompt) return;
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log('User prompt response:', outcome);
+                deferredPrompt = null;
+                installBtn.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('appinstalled', () => {
+            console.log('App was installed successfully');
+            if (installBtn) {
+                installBtn.style.display = 'none';
+            }
+        });
+
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const btn = document.getElementById('themeToggleBtn');
+            if (html.getAttribute('data-theme') === 'light') {
+                html.setAttribute('data-theme', 'dark');
+                btn.innerHTML = '☀️ Light Mode';
+            } else {
+                html.setAttribute('data-theme', 'light');
+                btn.innerHTML = '🌙 Dark Mode';
+            }
+        }
+
+        function switchTab(tabName) {
+            // Remove active classes
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('onclick').includes(`'${tabName}'`)) {
+                    btn.classList.add('active');
+                }
+            });
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            // Show new active panel
+            const activePanel = document.getElementById(`panel-${tabName}`);
+            if (activePanel) {
+                activePanel.classList.add('active');
+            }
+        }
+
+        function toggleCodeView(id) {
+            const codeEl = document.getElementById(id);
+            if (codeEl.style.display === 'block') {
+                codeEl.style.display = 'none';
+            } else {
+                codeEl.style.display = 'block';
+                // Populate escaped html code on first display
+                const codeInner = codeEl.querySelector('code');
+                const targetTableId = codeInner.getAttribute('data-target');
+                const tableEl = document.getElementById(targetTableId);
+                if (tableEl && !codeInner.textContent) {
+                    codeInner.textContent = tableEl.outerHTML;
+                }
+            }
+        }
+
+        function copyTableHtml(targetId) {
+            const tableEl = document.getElementById(targetId);
+            if (!tableEl) return;
+            
+            const htmlContent = tableEl.outerHTML;
+            
+            navigator.clipboard.writeText(htmlContent).then(() => {
+                showToast('Table HTML code copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const body = section.querySelector('.table-section-body');
+            if (section.classList.contains('expanded')) {
+                section.classList.remove('expanded');
+                body.style.display = 'none';
+            } else {
+                section.classList.add('expanded');
+                body.style.display = 'block';
+            }
+        }
+
+        let allExpanded = true;
+        function toggleAllSections() {
+            allExpanded = !allExpanded;
+            const btn = document.getElementById('expandCollapseAllBtn');
+            const sections = document.querySelectorAll('.table-section');
+            sections.forEach(section => {
+                const body = section.querySelector('.table-section-body');
+                if (allExpanded) {
+                    section.classList.add('expanded');
+                    body.style.display = 'block';
+                } else {
+                    section.classList.remove('expanded');
+                    body.style.display = 'none';
+                }
+            });
+            btn.innerHTML = allExpanded ? '↕ Collapse All Tables' : '↕ Expand All Tables';
+        }
+
+        let fullPageSource = '';
+        function toggleFullCodeView() {
+            const codeEl = document.getElementById('full-app-code-area');
+            if (codeEl.style.display === 'block') {
+                codeEl.style.display = 'none';
+            } else {
+                codeEl.style.display = 'block';
+                const codeInner = codeEl.querySelector('code');
+                if (!fullPageSource) {
+                    codeInner.textContent = 'Loading source code...';
+                    fetch('index.html')
+                        .then(response => {
+                            if (!response.ok) throw new Error('Fetch failed');
+                            return response.text();
+                        })
+                        .then(text => {
+                            fullPageSource = text;
+                            codeInner.textContent = text;
+                        })
+                        .catch(err => {
+                            console.warn('Fallback to document outerHTML due to: ', err);
+                            fullPageSource = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+                            codeInner.textContent = fullPageSource;
+                        });
+                }
+            }
+        }
+
+        function copyFullAppHtml() {
+            if (fullPageSource) {
+                navigator.clipboard.writeText(fullPageSource).then(() => {
+                    showToast('Full page HTML source code copied to clipboard!');
+                }).catch(err => console.error(err));
+            } else {
+                fetch('index.html')
+                    .then(response => {
+                        if (!response.ok) throw new Error('Fetch failed');
+                        return response.text();
+                    })
+                    .then(text => {
+                        fullPageSource = text;
+                        navigator.clipboard.writeText(text).then(() => {
+                            showToast('Full page HTML source code copied to clipboard!');
+                        });
+                    })
+                    .catch(err => {
+                        console.warn('Fallback to document outerHTML due to: ', err);
+                        const fallbackText = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+                        navigator.clipboard.writeText(fallbackText).then(() => {
+                            showToast('Full page HTML source code copied to clipboard!');
+                        });
+                    });
+            }
+        }
+    </script></body>
+</html>
