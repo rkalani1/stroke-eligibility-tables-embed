@@ -1,4 +1,4 @@
-const CACHE_NAME = 'stroke-studies-v2';
+const CACHE_NAME = 'stroke-studies-v5';
 const ASSETS = [
   'index.html',
   'manifest.json',
