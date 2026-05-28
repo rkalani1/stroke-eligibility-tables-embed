@@ -556,8 +556,26 @@
             color: #d9c383 !important;
         }
 
-
-
+        /* Compliance Footer styling */
+        .compliance-footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+        .compliance-footer a {
+            color: var(--brand-purple);
+            text-decoration: underline;
+            margin-right: 15px;
+        }
+        .compliance-footer a:last-child {
+            margin-right: 0;
+        }
+        [data-theme="dark"] .compliance-footer a {
+            color: #a78bfa;
+        }
     </style>
 
     <!-- PWA support -->
@@ -1546,5 +1564,13 @@
                     });
             }
         }
-    </script></body>
+    </script>
+<footer class="compliance-footer">
+  <p>This is a synthetic public demo site for educational and reference purposes only. Not for clinical decision-making or real patient care.</p>
+  <p style="margin-top: 8px;">
+    <a href="https://www.washington.edu/online/terms/" target="_blank" rel="noopener noreferrer">UW Website Terms</a>
+    <a href="https://www.washington.edu/online/privacy/" target="_blank" rel="noopener noreferrer">UW Online Privacy Policy</a>
+  </p>
+</footer>
+</body>
 </html>
