@@ -2,7 +2,7 @@
 
 This repository contains static HTML reference tables for stroke study eligibility. The public GitHub Pages build is a demo and code preview only.
 
-Live preview: https://example.github.io/stroke-eligibility-tables-embed/
+Live preview: https://rkalani1.github.io/stroke-eligibility-tables-embed/
 
 ## Compliance Guardrails
 
