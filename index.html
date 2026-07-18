@@ -271,9 +271,9 @@
             color: white;
             letter-spacing: 0.05em;
         }
-        .badge.refer, .badge.enrolling { background-color: var(--status-enrolling); }
-        .badge.future, .badge.soon { background-color: var(--status-soon); }
-        .badge.closed { background-color: var(--status-closed); }
+        .badge.refer, .badge.enrolling { background-color: #047857; }
+        .badge.future, .badge.soon { background-color: #b45309; }
+        .badge.closed { background-color: #475569; }
 
         /* Bedside table section cards */
         .table-section {
@@ -309,7 +309,7 @@
             background: #27272a;
         }
 
-        .table-section-header h3 {
+        .table-section-header h2 {
             font-size: 1.35rem;
             font-weight: 700;
             color: var(--text-main);
@@ -583,8 +583,8 @@
         }
         [data-theme="dark"] .compliance-footer a {
             color: #a78bfa;
-        }"
-"./* Respect users who prefer reduced motion (vestibular/a11y). */
+        }
+        /* Respect users who prefer reduced motion (vestibular/a11y). */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -592,7 +592,7 @@
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
             }
-        }.
+        }
     </style>
 
     <!-- PWA support -->
@@ -641,10 +641,10 @@
             <div class="timing-section-title">⚡ Acute (Onset &le; 24 Hours)</div>
 
             <div class="table-section expanded" id="section-ischemic-hyperacute">
-                <div class="table-section-header" onclick="toggleSection('section-ischemic-hyperacute')">
+                <div class="table-section-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleSection('section-ischemic-hyperacute')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection('section-ischemic-hyperacute');}">
                     <div class="header-title-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
                         <span class="chevron-icon">▼</span>
-                        <h3>Ischemic Stroke - Acute (Onset &le; 24 Hours)</h3>
+                        <h2>Ischemic Stroke - Acute (Onset &le; 24 Hours)</h2>
                     </div>
                     <div class="action-buttons" onclick="event.stopPropagation()">
                         <button class="action-btn" onclick="copyTableHtml('table-ischemic-hyperacute')">📋 Copy HTML</button>
@@ -669,7 +669,7 @@
                             <tbody>
                                 <tr style="border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05948566" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SISTER ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05948566" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SISTER ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -693,7 +693,7 @@
                                 </tr>
                                 <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06289985" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">STEP ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06289985" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">STEP ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -725,10 +725,10 @@
             <div class="timing-section-title">🏥 Inpatient (Admission to Day 30)</div>
 
             <div class="table-section expanded" id="section-ischemic-inpatient">
-                <div class="table-section-header" onclick="toggleSection('section-ischemic-inpatient')">
+                <div class="table-section-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleSection('section-ischemic-inpatient')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection('section-ischemic-inpatient');}">
                     <div class="header-title-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
                         <span class="chevron-icon">▼</span>
-                        <h3>Ischemic Stroke - Inpatient (Admission to Day 30)</h3>
+                        <h2>Ischemic Stroke - Inpatient (Admission to Day 30)</h2>
                     </div>
                     <div class="action-buttons" onclick="event.stopPropagation()">
                         <button class="action-btn" onclick="copyTableHtml('table-ischemic-inpatient')">📋 Copy HTML</button>
@@ -753,7 +753,7 @@
                             <tbody>
                                 <tr style="border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05338697" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">VERIFY ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05338697" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">VERIFY ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -774,7 +774,7 @@
                                 </tr>
                                 <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05911568" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">TESTED ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05911568" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">TESTED ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -799,7 +799,7 @@
                                 </tr>
                                 <tr style="border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06722755" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SCOUTS-3 ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06722755" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SCOUTS-3 ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -819,7 +819,7 @@
                                 </tr>
                                 <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT07174414" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">CLARITY ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT07174414" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">CLARITY ↗</a></div>
                                         <span class="badge soon" style="margin-top: 8px;">Soon</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -882,7 +882,7 @@
                                 </tr>
                                 <tr style="border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05723926" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">INTERCEPT ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05723926" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">INTERCEPT ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -913,10 +913,10 @@
             <div class="timing-section-title">🏡 Outpatient (Day 14 to Month 6+)</div>
 
             <div class="table-section expanded" id="section-ischemic-outpatient">
-                <div class="table-section-header" onclick="toggleSection('section-ischemic-outpatient')">
+                <div class="table-section-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleSection('section-ischemic-outpatient')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection('section-ischemic-outpatient');}">
                     <div class="header-title-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
                         <span class="chevron-icon">▼</span>
-                        <h3>Ischemic Stroke - Outpatient (Day 14 to Month 6)</h3>
+                        <h2>Ischemic Stroke - Outpatient (Day 14 to Month 6)</h2>
                     </div>
                     <div class="action-buttons" onclick="event.stopPropagation()">
                         <button class="action-btn" onclick="copyTableHtml('table-ischemic-outpatient')">📋 Copy HTML</button>
@@ -941,7 +941,7 @@
                             <tbody>
                                 <tr style="border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT07174414" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">CLARITY ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT07174414" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">CLARITY ↗</a></div>
                                         <span class="badge soon" style="margin-top: 8px;">Soon</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -1004,7 +1004,7 @@
                                 </tr>
                                 <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06682429" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">TELE-REHAB-2 ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06682429" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">TELE-REHAB-2 ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -1025,7 +1025,7 @@
                                 </tr>
                                 <tr style="border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06506279" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">MR-PICS ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06506279" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">MR-PICS ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -1047,7 +1047,7 @@
                                 </tr>
                                 <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05723926" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">INTERCEPT ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT05723926" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">INTERCEPT ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -1083,10 +1083,10 @@
             <div class="timing-section-title">⚡ Acute (Onset &le; 24 Hours)</div>
 
             <div class="table-section expanded" id="section-ich-hyperacute">
-                <div class="table-section-header" onclick="toggleSection('section-ich-hyperacute')">
+                <div class="table-section-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleSection('section-ich-hyperacute')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection('section-ich-hyperacute');}">
                     <div class="header-title-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
                         <span class="chevron-icon">▼</span>
-                        <h3>Intracranial Hemorrhage (ICH) - Acute (Onset &le; 24 Hours)</h3>
+                        <h2>Intracranial Hemorrhage (ICH) - Acute (Onset &le; 24 Hours)</h2>
                     </div>
                     <div class="action-buttons" onclick="event.stopPropagation()">
                         <button class="action-btn" onclick="copyTableHtml('table-ich-hyperacute')">📋 Copy HTML</button>
@@ -1111,7 +1111,7 @@
                             <tbody>
                                 <tr style="border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT07260916" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">MINUTE ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT07260916" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">MINUTE ↗</a></div>
                                         <span class="badge soon" style="margin-top: 8px;">Soon</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -1135,7 +1135,7 @@
                                 </tr>
                                 <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03936361" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SATURN ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03936361" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SATURN ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -1167,10 +1167,10 @@
             <div class="timing-section-title">🏥 Inpatient (Admission to Day 30)</div>
 
             <div class="table-section expanded" id="section-ich-inpatient">
-                <div class="table-section-header" onclick="toggleSection('section-ich-inpatient')">
+                <div class="table-section-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleSection('section-ich-inpatient')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection('section-ich-inpatient');}">
                     <div class="header-title-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
                         <span class="chevron-icon">▼</span>
-                        <h3>Intracranial Hemorrhage (ICH) - Inpatient (Admission to Day 30)</h3>
+                        <h2>Intracranial Hemorrhage (ICH) - Inpatient (Admission to Day 30)</h2>
                     </div>
                     <div class="action-buttons" onclick="event.stopPropagation()">
                         <button class="action-btn" onclick="copyTableHtml('table-ich-inpatient')">📋 Copy HTML</button>
@@ -1195,7 +1195,7 @@
                             <tbody>
                                 <tr style="border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03936361" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SATURN ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03936361" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SATURN ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -1218,7 +1218,7 @@
                                 </tr>
                                 <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06722755" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SCOUTS-3 ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06722755" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">SCOUTS-3 ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -1238,7 +1238,7 @@
                                 </tr>
                                 <tr style="border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03907046" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">ASPIRE ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03907046" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">ASPIRE ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -1270,10 +1270,10 @@
             <div class="timing-section-title">🏡 Outpatient (Day 14 to Month 6+)</div>
 
             <div class="table-section expanded" id="section-ich-outpatient">
-                <div class="table-section-header" onclick="toggleSection('section-ich-outpatient')">
+                <div class="table-section-header" role="button" tabindex="0" aria-expanded="true" onclick="toggleSection('section-ich-outpatient')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection('section-ich-outpatient');}">
                     <div class="header-title-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
                         <span class="chevron-icon">▼</span>
-                        <h3>Intracranial Hemorrhage (ICH) - Outpatient (Day 14 to Month 6)</h3>
+                        <h2>Intracranial Hemorrhage (ICH) - Outpatient (Day 14 to Month 6)</h2>
                     </div>
                     <div class="action-buttons" onclick="event.stopPropagation()">
                         <button class="action-btn" onclick="copyTableHtml('table-ich-outpatient')">📋 Copy HTML</button>
@@ -1298,7 +1298,7 @@
                             <tbody>
                                 <tr style="border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03907046" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">ASPIRE ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT03907046" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">ASPIRE ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -1321,7 +1321,7 @@
                                 </tr>
                                 <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06682429" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">TELE-REHAB-2 ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06682429" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">TELE-REHAB-2 ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -1342,7 +1342,7 @@
                                 </tr>
                                 <tr style="border-bottom: 1px solid #e2e8f0;">
                                     <td style="padding: 16px; vertical-align: top;">
-                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06393712" target="_blank" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">CAPPRICORN-1 ↗</a></div>
+                                        <div style="font-weight: 700; color: #4b2e83; font-size: 16px;"><a href="https://clinicaltrials.gov/study/NCT06393712" target="_blank" rel="noopener noreferrer" title="View details on ClinicalTrials.gov" style="color: #4b2e83; text-decoration: underline; font-weight: 700;">CAPPRICORN-1 ↗</a></div>
                                         <span class="badge enrolling" style="margin-top: 8px;">Enrolling</span>
                                     </td>
                                     <td style="padding: 16px; vertical-align: top; color: #334155; line-height: 1.4;">
@@ -1514,12 +1514,15 @@
         function toggleSection(sectionId) {
             const section = document.getElementById(sectionId);
             const body = section.querySelector('.table-section-body');
+            const header = section.querySelector('.table-section-header');
             if (section.classList.contains('expanded')) {
                 section.classList.remove('expanded');
                 body.style.display = 'none';
+                if (header) header.setAttribute('aria-expanded', 'false');
             } else {
                 section.classList.add('expanded');
                 body.style.display = 'block';
+                if (header) header.setAttribute('aria-expanded', 'true');
             }
         }
 
@@ -1530,12 +1533,15 @@
             const sections = document.querySelectorAll('.table-section');
             sections.forEach(section => {
                 const body = section.querySelector('.table-section-body');
+                const header = section.querySelector('.table-section-header');
                 if (allExpanded) {
                     section.classList.add('expanded');
                     body.style.display = 'block';
+                    if (header) header.setAttribute('aria-expanded', 'true');
                 } else {
                     section.classList.remove('expanded');
                     body.style.display = 'none';
+                    if (header) header.setAttribute('aria-expanded', 'false');
                 }
             });
             btn.innerHTML = allExpanded ? '↕ Collapse All Tables' : '↕ Expand All Tables';
